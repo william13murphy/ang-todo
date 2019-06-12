@@ -23,8 +23,10 @@ export class TodosComponent implements OnInit {
     this.todoService.deleteTodo(todo).subscribe();
   }
 
-  addTodo(todo: Todo) {
-    this.todoService.addTodo(todo).subscribe(todo => {
+  addTodo(newtodo: Todo) {
+    this.todoService.addTodo(newtodo).subscribe(todo => {
+      todo.id = Date.now();
+      todo.title = newtodo.title;
       this.todos.push(todo);
     });
   }
